@@ -15,6 +15,7 @@ def load_data():
 
 if __name__ == '__main__':
     set1,set2 = load_data()
+    # write your code here
     fig,axes = plt.subplots(2,2)
     axes[0,0].scatter(set1.T[0],set1.T[1])
     axes[1,0].scatter(set2.T[0],set2.T[1])
@@ -27,4 +28,4 @@ if __name__ == '__main__':
 
     fig.show()
 
-    # write your code here
+
