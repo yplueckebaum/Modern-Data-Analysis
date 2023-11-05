@@ -22,6 +22,7 @@ if __name__ == '__main__':
     axes[1, 0].set_title('Set 2 - Original')
     whiten_data = PCA(whiten=True, n_components=2)  # both 2 dim?
     set1_w = whiten_data.fit_transform(set1)
+    whiten_data = PCA(whiten=True, n_components=2)
     set2_w = whiten_data.fit_transform(set2)
     axes[0, 1].scatter(set1_w.T[0], set1_w.T[1])
     axes[0, 1].set_title('Set 1 - Whitened')

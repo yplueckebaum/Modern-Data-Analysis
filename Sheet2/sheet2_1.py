@@ -1,7 +1,8 @@
-# import scikitlearn
+import sklearn as sk
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy as sp
+import sklearn.decomposition
 
 
 def load_data():
@@ -64,6 +65,12 @@ if __name__ == '__main__':
     # plot reconstruction
     index = 3
     plt.imshow(stitch_images([get_image_from_data(set1, index), get_image_from_data(D.dot(A), index)], 1, 2, 64), cmap='gray')
+    plt.show()
+
+    # b)
+    nmf = sk.decomposition.NMF(alpha_W=1,l1_ratio=1,verbose=1,tol=0.05)#,n_components=10)
+    solution_NMF = nmf.fit_transform(set1)
+    plt.imshow(get_image_from_data(solution_NMF,0), cmap='gray')
     plt.show()
 
 
