@@ -68,9 +68,11 @@ if __name__ == '__main__':
     plt.show()
 
     # b)
-    nmf = sk.decomposition.NMF(alpha_W=1,l1_ratio=1,verbose=1,tol=0.05)#,n_components=10)
+    nmf = sk.decomposition.NMF(alpha_W=1,l1_ratio=1,verbose=1,tol=0.05,n_components=n_components)
     solution_NMF = nmf.fit_transform(set1)
-    plt.imshow(get_image_from_data(solution_NMF,0), cmap='gray')
+
+    plt.imshow(stitch_images([get_image_from_data(nmf.components_, i) for i in range(n_components)], 2, 5, 64), cmap='gray')
+    plt.imshow(get_image_from_data(solution_NMF.dot(nmf.components_),3),cmap='gray')
     plt.show()
 
 
