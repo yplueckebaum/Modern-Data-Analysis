@@ -72,8 +72,11 @@ if __name__ == '__main__':
     solution_NMF = nmf.fit_transform(set1)
 
     plt.imshow(stitch_images([get_image_from_data(nmf.components_, i) for i in range(n_components)], 2, 5, 64), cmap='gray')
-    plt.imshow(get_image_from_data(solution_NMF.dot(nmf.components_),3),cmap='gray')
     plt.show()
+    plt.imshow(stitch_images([get_image_from_data(set1, index),get_image_from_data(solution_NMF.dot(nmf.components_),index)],1,2,64),cmap='gray')
+    plt.show()
+    # discussion:
+    # directionality of face is lost, both models imagine glasses and beard(??) and sparsity loss leads to only three real components
 
 
 
